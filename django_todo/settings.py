@@ -26,8 +26,8 @@ SECRET_KEY = '-m(ud^gu5$i)rdm5b@(!f$lz&7@e!b8&u6a_@jgsfhegb0b6t)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['django-todo-codecap.c9users.io',
-                'django-hc-todo-app.herokuapp.com']
+ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME'),
+                os.environ.get('HOSTNAME')]
 
 
 # Application definition
@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'django_todo.wsgi.application'
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
-DATABASES = {'default': dj_database_url.parse('postgres://vwnyavvwkwsqpb:c479578af6da458b752c4372c61665b116f6c6189cb54e930e55f549af41c2ab@ec2-46-137-170-51.eu-west-1.compute.amazonaws.com:5432/d8i6ujo6s05u15')}
+DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
